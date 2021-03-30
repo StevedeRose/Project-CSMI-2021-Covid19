@@ -7,7 +7,7 @@ jobs:
   activate:
     runs-on: ubuntu-latest
     if: |
-      github.repository == 'feelpp/covid19' &&
+      github.repository == 'master-csmi/project-csmi-2021-covid19' &&
       !startsWith(github.event.head_commit.message, 'Release ') &&
       !contains(github.event.head_commit.message, 'ci skip')
     steps:
@@ -139,8 +139,8 @@ jobs:
       uses: docker/build-push-action@v2
       with: 
         context: artifacts
-        repository: feelpp/project-csmi-2021-covid19
-        tags: ghcr.io/feelpp/project-csmi-2021-covid19:latest
+        repository: master-csmi/project-csmi-2021-covid19
+        tags: ghcr.io/master-csmi/project-csmi-2021-covid19:latest
         file: ./Dockerfile
         push: true
         
