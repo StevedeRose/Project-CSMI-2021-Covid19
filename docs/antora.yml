@@ -1,5 +1,5 @@
-name: myproject
-title: Feel++ MyProject
+name: covid19
+title: Feel++ covid19
 version: '1.0.0'
 nav:
 - modules/ROOT/nav.adoc

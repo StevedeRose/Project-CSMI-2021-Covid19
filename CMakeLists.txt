@@ -22,7 +22,7 @@
 #
 #
 cmake_minimum_required(VERSION 3.15.0)
-project(myproject VERSION 1.0.0)
+project(covid19 VERSION 1.0.0)
 set(EXTRA_VERSION "")
 set(PROJECT_SHORTNAME "p")
 

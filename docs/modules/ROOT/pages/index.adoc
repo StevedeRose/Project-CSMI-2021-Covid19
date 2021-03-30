@@ -1,4 +1,4 @@
-= MyProject
+= covid19
 
 This is a {feelpp} Template Project. 
 It serves as a template for {feelpp} projects.

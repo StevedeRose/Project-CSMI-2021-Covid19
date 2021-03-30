@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/bash
 
 in_default_projectname="project"
 read -p "What is the name of the project ? [$in_default_projectname]: " projectname
@@ -35,7 +35,7 @@ export shortprojectname
 export appname
 
 files=( "README.adoc" "CMakeLists.txt" "src/CMakeLists.txt" "src/.tests.myapp" 
-        "site-dev.yml" "docs/antora.yml" "docs/ROOT/index.adoc" 
+        "docs/site.yml" "docs/antora.yml" "docs/modules/ROOT/pages/index.adoc" 
         ".github/workflows/ci.yml" ".github/workflows/release.yml" )
 for i in "${files[@]}"
 do
