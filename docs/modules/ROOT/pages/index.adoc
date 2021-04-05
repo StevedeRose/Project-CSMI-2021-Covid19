@@ -8,8 +8,6 @@ The features include
 * xref:antora.adoc[antora environment]
 * xref:vscode.adoc[vscode integration]
 
-http://www.cemosis.fr/projects/4fastsim-ibat/[test]
-
 
 
 
