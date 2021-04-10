@@ -27,7 +27,7 @@ https://www.synapse-concept.com/[Synapse-Concept] is a company specialised in en
 
 == Plan
 
-* Project presentation
+* xref:formulation.adoc[Project presentation]
 * Study the models
 * Reproduction of the models
 * Association with air models (if enough time available)

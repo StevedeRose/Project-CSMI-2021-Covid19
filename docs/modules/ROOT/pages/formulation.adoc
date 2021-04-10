@@ -1,0 +1,34 @@
+= Modelling Airborne Transmission of COVID-19
+:hardbreaks-option:
+
+Following  the  emergence  and  quick  transmission  of  the  Covid-19  virus,  andknowing this virus is transmitted through virus-carrying respiratory droplets,we need a model for indoors airborne transmission that is quick to implement.In order to create such a model, we make some assumptions: 
+
+* the air in the room follows an advection-diffusion-reaction equation
+* there is only one infectious person in the room•the size of the room is latexmath:[$8m(l)×8m(w)×3m(h)$].  
+And we test the effect on several ventilation settings:•breathing with and without a face mask
+* talking with and without a face mask.
+
+Models studying risk of airborne transmission generally fall into one of twotypes:  the well-mixed room (WMR) assumption and Computational Fluid Dy-namics (CFD) models.
+Well  Mixed  Room  model  assume  virus-carrying  aerosols  are  evenly  dis-tributed throughout the room, so everyone in the room is equally likely to beinfected.  This assumption greatly simplifies the problem by ignoring the com-plex effects of the air flow on the airborne particles.  These types of models aretherefore quick to run, but also too simplistic.  Computational Fluid Dynamicssimulations are useful in studying airborne transmission as they can take intoaccount the details of the room size, geometry, the complex turbulent airflowand the size distribution of the aerosols.  These models are accurate, but take along time to run and are not suited for «dynamic simulations».
+Therefore,  we  develop  a  model  that  provides  quick  simulations  and  stilltakes  into  account  turbulence  airflow.    This  model  is  based  on  the  advection–diffusion–reaction equation.
+
+== Methodology
+
+We create a 2D model to study the concentration of airborne infectious particlesin a rectangular domain. Respiratory droplets are transported via advection dueto the airflow in the room and diffusion due to turbulent mixing.  We assumethe recirculation of air leads to turbulent mixing of the infectious particles.
+Here is the governing equation for the airborne transmission of COVID-19,the advection–reaction–diffusion equation:
+latexmath:[$$\frac{\partial C}{\partial t}=\nabla.(K\nabla C)−\nabla.(\vect{v} C)+S.$$]
+_C_ = concentration of airborne infectious particles
+_t_ = time +
+∇ = two-dimensional gradient operator +
+_K_ = isotropic eddy diffusion coefficient (turbulent diffusion )
+latexmath:[$\vect{x}$] = advection velocity of the air
+_S_ = sum of sources and sinks of viral particles.
+
+We  model  the  infected  person  breathing  or  talking  as  a  continuous  pointsource  emitting  viral  particles  at  a  constant  rate  of  R  particles  per  second. Thus, an infectious person talking or breathing at position latexmath:[$(x_0,y_0)$] starting at time latexmath:[$t=t_0$] is modelled as follows:
+latexmath:[$$S_inf=R \delta(x−x_0)\delta(y−y_0)H(t−t_0)$$].
+latexmath:[$\delta(x)$] is the Kronecker delta function and latexmath:[$H(t)$] is the Heaviside step function.
+Because _R_ is unknown so far, we assume every respiratory droplets contain the virus and that inhaling and exhaling occur at the same rate. We also assume there is mechanical ventilation in this indoor space provided by air vents.
+latexmath:[$$S_{vent}=−\lambda C,$$]
+where latexmath:[$\lambda$] is the air exchange rate of the room.  This is an approximation sinceremoval of the air by ventilation occurs at a higher rate near the air vents.
+Assuming there is only one infectious person, we obtain the following partial differential equation (PDE):
+latexmath:[$$\frac{\partial C}{\partial t} + \vect{v}.(\nabla C)−K\nabla^2 C=R \delta(x−x_0)\delta(y−y_0)H(t−t_0)−\lambda C.$$]

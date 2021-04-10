@@ -1,5 +1,6 @@
 * {feelpp} project
 ** xref:index.adoc[Introduction]
+** xref:formulation.adoc[Modelling Airborne Transmission of COVID-19]
 ** xref:cmake.adoc[cmake environment]
 ** xref:antora.adoc[antora environment]
 ** xref:vscode.adoc[vscode integration]
