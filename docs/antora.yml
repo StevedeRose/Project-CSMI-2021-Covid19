@@ -1,5 +1,5 @@
 name: covid19
-title: Feel++ covid19
+title: Feel++ Covid 19
 version: '1.0.0'
 nav:
 - modules/ROOT/nav.adoc
