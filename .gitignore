@@ -2,6 +2,7 @@ node_modules/
 build*/
 docs/public/
 docs/cache/
+docs/.cache/
 *.bak
 # Prerequisites
 *.d
@@ -43,5 +44,4 @@ docs/cache/
 auto-save-list
 tramp
 .\#*
-.vscode/settings.json
 context.synctex.gz
