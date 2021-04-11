@@ -1,14 +1,46 @@
-= covid19
+= {feelpp} Covid 19 Project.
+:toc:
 
-{feelpp} Covid 19 Project.
+== Context
 
-The features include
+=== Covid 19
+
+Covid 19 virus was reported to the World Health Organization (WHO) on December 31, 2019, and was declared by the WHO as a global pandemic on March 11, 2020. +
+Since then, preventing the spread of this virus has been a priority. To reduce its spread, many countries have decided to isolate their populations as much as possible and have implemented social isolation measures that have transformed people's lives. +
+In order to get back to our "normal lives" and remove all social distancing measures, we need to make sure it can be done in a safe manner and not put people at risk.
+
+=== 4fastsim-ibat
+
+Cemosis and Synapse-Concept are working together on a project called https://www.cemosis.fr/projects/4fastsim-ibat/[4fastsim-ibat]. The project aims to reduce and control energy consumption in buildings. Air is a major component in a building while trying to control energy consumption. Since Covid-19 first appeared in our lives, the issue of air quality is crucial. +
+In fact, according to United States Environmental Protection Agency, the spread of COVID-19 may also occur via airborne particles in indoor environments, in some circumstances beyond the 2 m range encouraged by some social distancing recommendations. +
+Therefore, air circulation in a building has to be controlled to avoid contamination.
+
+In this project, we will work on modeling the airborne transmission of COVID-19 in indoor spaces using an advection - diffusion - reaction equation. Then, we will associate this equation with the Navier-Stokes turbulence model. And we are finally going to study transmission in an entire building.
+
+== Cemosis
+
+https://www.cemosis.fr/[Cemosis] was created in January 2013 by Christophe Prud’homme and is hosted by IRMA (the Institute of Advanced Mathematical Research). Cemosis is the Strasbourg Centre for Modelling and Simulation. It offers expertise in Modeling Simulation and Optimization (MSO), Data Science, Big Data, Smart Data (DS), High Performance Computing, Parallel Computing, Cloud Computing (HPC) and in Signal and Image processing (SI). 
+
+== Synapse-Concept
+
+https://www.synapse-concept.com/[Synapse-Concept] is a company specialised in engineering and technical studies. This company was created in November 1999.
+
+== Plan
+
+* xref:formulation.adoc[Project presentation]
+* Study the models
+* Reproduction of the models
+* Association with air models (if enough time available)
+
+== Features
 
 * xref:cmake.adoc[cmake environment]
 * xref:antora.adoc[antora environment]
 * xref:vscode.adoc[vscode integration]
 
+== Bibliography
 
+http://www.cemosis.fr/projects/4fastsim-ibat/[^]
 
 
 

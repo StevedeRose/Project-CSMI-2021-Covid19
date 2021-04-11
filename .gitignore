@@ -44,3 +44,4 @@ auto-save-list
 tramp
 .\#*
 .vscode/settings.json
+context.synctex.gz
