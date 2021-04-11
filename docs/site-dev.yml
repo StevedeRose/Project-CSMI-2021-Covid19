@@ -4,11 +4,10 @@ git:
   ensure_git_suffix: false
 site:
   title: Covid19 // Docs
-  url: https://master-csmi.github.io/project-csmi-2021-covid19
   start_page: covid19::index.adoc
 content:
   sources:
-  - url: https://github.com/master-csmi/project-csmi-2021-covid19
+  - url: ..
     branches: master
     start_path: docs
 ui:

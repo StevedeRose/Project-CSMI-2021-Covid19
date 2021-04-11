@@ -1,0 +1,5 @@
+- [[[covid19-1]]] Zechariah Lau, Katerina Kaouri, Ian M. Griffiths. link:{attachmentsdir}/2012.12267.pdf[_Modelling Airborne Transmission of COVID-19 in Indoor Spaces Using anAdvection–Diffusion–Reaction Equation_].School of Mathematics, Cardiff University and Mathematical Institute, University of Oxford.
+
+- [[[cfd-1]]] Bin Zhao and Xianting Li. link:{attachmentsdir}/A_simplified_system_for_indoor_airflow_simulation.pdf[_A simplified system for indoor airflow simulation_]. Building and Environment · April 2003
+
+- [[[ibat-www]]] Zohra Djatouti, Christophe Prud'homme, Vincent Chabannes, Romain Hild http://www.cemosis.fr/projects/4fastsim-ibat/[IBat Website]

@@ -1,8 +1,8 @@
 * {feelpp} project
 ** xref:index.adoc[Introduction]
-** xref:cmake.adoc[cmake environment]
-** xref:antora.adoc[antora environment]
-** xref:vscode.adoc[vscode integration]
-** xref:githubactions.adoc[Github Actions]
-** xref:rename.adoc[Renaming the project]
-
+** xref:formulation.adoc[Formulation]
+** Programming and documentation environment
+*** xref:env/cmake.adoc[CMake environment]
+*** xref:env/antora.adoc[Antora environment]
+*** xref:env/vscode.adoc[VSCode integration]
+*** xref:env/githubactions.adoc[Github Actions]

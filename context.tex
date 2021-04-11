@@ -1,11 +1,16 @@
-\documentclass{article} 
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[hcentering,textwidth=17.5cm,top=3cm,bottom=3cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{natbib}
 \usepackage{graphicx}
 \usepackage[x11names]{xcolor}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{pgfgantt}
+
+\DeclareUnicodeCharacter{2212}{-}
 
 \title{Modelling Airborne Transmission of COVID-19}
 \author{Mariam Grigoryan \and Anita Klein \and Steve de Rose}
@@ -14,6 +19,7 @@
 \begin{document}
 \maketitle
 \section*{Context}
+
 Covid-19 virus was reported to the World Health Organization (WHO) on December 31, 2019, and was declared by the WHO as a global pandemic on March 11 2020. 
 Since, avoiding the spread of this virus has been a priority. To reduce its spread, many countries have decided to isolate their population as much as possible, and have implemented social isolation measures that transformed people's lives.
 
@@ -45,11 +51,10 @@ Synapse-Concept is a company specialised in engineering and technical studies. T
 \pagebreak
 
 \section*{Our Roadmap}
-\begin{center}    
 \begin{ganttchart}[
-    x unit=0.8cm,
+    x unit=1cm,
     y unit title=0.8cm,
-    y unit chart=0.7cm,
+    y unit chart=0.8cm,
     vgrid,
     hgrid,
     bar/.append style={fill=red!50},
@@ -96,17 +101,7 @@ Synapse-Concept is a company specialised in engineering and technical studies. T
         \ganttlink{elem8}{elem11}
         \ganttlink{elem11}{elem14}
 \end{ganttchart}
-\end{center}
-
-
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage{natbib}
-\usepackage{graphicx}
-
-\begin{document}
-
-\section*{Modelling Airborne Transmission of COVID-19}
+\pagebreak
 
 Following the emergence and quick transmission of the Covid-19 virus, and knowing this virus is transmitted through virus-carrying respiratory droplets, we need a model for indoors airborne transmission that is quick to implement. \\
 In order to create such a model, we make some assumptions:
@@ -157,12 +152,76 @@ where $\lambda$ is the air exchange rate of the room. This is an approximation s
 Assuming there is only one infectious person, we obtain the following partial differential equation (PDE):
 
 $$ \frac{\partial C}{\partial t} + \overrightarrow{v} . (\nabla C) - K  \nabla^2  C =
-R \ \delta(x-x_0) \ \delta(y-y_0) \ H(t-t_0) - \lambda C.$$
+R \delta(x-x_0) \delta(y-y_0) \ H(t-t_0) - \lambda C.$$
 
-\end{document}
+\subsection*{Aiflow simulation}
 
+In a second time, we will use a more realistic airflow simulation.
+
+\subsubsection*{A simplified system for indoor airflow simulation}
+
+Even though it is possible to accurately predict some features of airflow within ventilated thanks to advances in computationnal fluid dynamics (CFD) and computer power, it would consume a lot of time to get convergence.
+Thus, in order to make predictions in short time on a personal computer, we will use a simplified simulation system called «$N$-point ASOM» (air supply opening model) and developped in 2003 by Bin Zhaoa, Xianting Lib and Qisen Yanb at Tsinghua University, Beijing, China.
+In 2003, the existing ASOM could be divided into two types:
+\begin{itemize}
+    \item Indirect ones: converting the description of boundary conditions to the description of a box boundary conditions around the supply opening.
+    \item Direct ones: describing boundary conditions in the vicinity of supply openings. Contrary to indirect methods, they need neither measurements nor empirical formulas.\\
+    There are mainly two direct ASOMs:
+    \begin{itemize}
+        \item Basic model that uses a simple opening with the same effective area as the complex diffuser.\\
+        It may cause obvious error for a diffuser with small effective area.
+        \item Momentum model that escribes velocity vectorbased on diffuser effective area.\\
+        To keep the appropriate supply air mass flow and to introduce the same amount of air into the room, the boundary conditions for continuity equation and momentum equations have to be described separately.
+    \end{itemize}
+\end{itemize}
+
+In principle, direct ASOM can be applied for any case. Thus, it should be the first choice for engineering application.
+
+«$N$-point ASOM» combines the positive features of both direct ASOM and momentum method.
+
+\subsubsection*{$N$-point ASOM}
+
+The essential of $N$-point ASOM is to replace the real diffuser by several simple openings so as to reduce thenumber of grids for numerical calculation, while maintaining the inlet momentum and mass flows.
+
+For a supply opening with one discharge direction, the actual inlet momentum flow is
+$$J_{in} = mV_{\tau} = m\frac{L}{A_c}$$
+\begin{itemize}
+    \item $J_{in}$ = momentum flux ($kg.m.s^{-2}$)
+    \item $m$ = mass flow rate ($kg.s^{-1}$)
+    \item $V_t$ = velocity ($m.s^{-1}$)
+    \item $L$ = volume flow rate ($m^3.s^{-1}$)
+    \item $A_c$ = effective area of the supply opening ($m^2$)
+\end{itemize}
+To describe the right momentum flow while maintainingthe same mass flow rate, the effective area coefficient for calculating the inlet momentum source term in the CFD code is used. That is:
+$$J_{in} = m\frac{L}{R_{fa}A}$$
+\begin{itemize}
+    \item $A$ = gross area of the supply opening ($m^2$)
+    \item $R_{fa}$ = ratio of effectivearea to gross area of the supply opening ($\leqslant 1$)
+\end{itemize}
+By this equation, inlet momentum flow can be correctly defined and the right inlet mass flow is also given at the same time. It is not necessary to describe boundary conditions formomentum and continuity equations separately. 
+
+The buoyancy inflow of the supply opening is
+$$B = g\Delta\rho L$$
+\begin{itemize}
+    \item $g$ = acceleration of gravity ($m.s^{-2}$)
+    \item $\Delta\rho$ = difference of supply and indoor air density ($kg.m^{-3}$)
+    \item $L$ = supply volume flow rate ($m^3.s^{-1}$)
+\end{itemize}
+
+For indoor air, we have
+$$\Delta\rho = -\Delta T\beta\rho,$$
+$$\beta = \frac{1}{T_0}$$
+\begin{itemize}
+    \item $\Delta T$ = the difference of supply and indoor air temperature ($K$)
+    \item $\beta$ = volumetric coeQcient of expansion ($K^{-1}$)
+    \item $T_0$ = average temperature of indoor air ($K$)
+\end{itemize}
+Therefore,
+$$B=−g\frac{\Delta T}{T_0}\rho L.$$
+The $N$-point ASOM can ensure $B$ if $L$ is correctly defined.
 
 \section*{Bibliography}
-http://www.cemosis.fr/projects/4fastsim-ibat/
+http://www.cemosis.fr/projects/4fastsim-ibat/\\
+https://www.researchgate.net/publication/223542250
 
 \end{document}

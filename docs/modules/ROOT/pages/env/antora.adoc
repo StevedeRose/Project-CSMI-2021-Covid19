@@ -9,7 +9,7 @@ cd docs
 antora site.yml
 ----
 
-.To visualizethe documentation
+.To visualize the documentation
 ----
 # from topevel directory
 node-srv docs/public
