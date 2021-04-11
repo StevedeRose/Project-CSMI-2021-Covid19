@@ -42,10 +42,11 @@ This company was created in November 1999.
 * xref:env/antora.adoc[antora environment]
 * xref:env/vscode.adoc[vscode integration]
 
-== Bibliography
-
-http://www.cemosis.fr/projects/4fastsim-ibat/[^]
 
 
+[bibliography]
+== References
+
+include::partial$bibliography.adoc[]   
 
 
