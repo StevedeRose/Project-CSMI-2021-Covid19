@@ -1,4 +1,6 @@
 :stem: stem
+:imagesprefix:
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../images/]
 
 = Modelling Airborne Transmission of COVID-19
 :hardbreaks-option:
@@ -8,6 +10,9 @@ Following  the  emergence  and  quick  transmission  of  the  Covid-19  virus,  
 * the air in the room follows an advection-diffusion-reaction equation
 * there is only one infectious person in the room
 * the size of the room is stem:[8m(l)×8m(w)×3m(h)].
+
+.Schematic of the modelled room from <<covid19-1>>
+image::room-1.png[align=center]
 
 And we test the effect on several ventilation settings:
 
