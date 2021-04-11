@@ -1,3 +1,5 @@
+:stem: stem
+
 = Modelling Airborne Transmission of COVID-19
 :hardbreaks-option:
 
@@ -5,7 +7,7 @@ Following  the  emergence  and  quick  transmission  of  the  Covid-19  virus,  
 
 * the air in the room follows an advection-diffusion-reaction equation
 * there is only one infectious person in the room
-* the size of the room is latexmath:[8m(l)×8m(w)×3m(h)].
+* the size of the room is stem:[8m(l)×8m(w)×3m(h)].
 
 And we test the effect on several ventilation settings:
 
@@ -21,23 +23,44 @@ Therefore,  we  develop  a  model  that  provides  quick  simulations  and  stil
 
 We create a 2D model to study the concentration of airborne infectious particles in a rectangular domain. Respiratory droplets are transported via advection due to the airflow in the room and diffusion due to turbulent mixing.  We assume the recirculation of air leads to turbulent mixing of the infectious particles.
 Here is the governing equation for the airborne transmission of COVID-19, the advection–reaction–diffusion equation:
-latexmath:[$$\frac{\partial C}{\partial t}=\nabla.(K\nabla C)−\nabla.(\vec{v} C)+S.$$] +
-_C_ = concentration of airborne infectious particles +
-_t_ = time +
-latexmath:[\nabla] = two-dimensional gradient operator +
-_K_ = isotropic eddy diffusion coefficient (turbulent diffusion) +
-latexmath:[\vec{x}] = advection velocity of the air +
-_S_ = sum of sources and sinks of viral particles.
+[stem]
+++++
+\frac{\partial C}{\partial t}=\nabla.(K\nabla C)−\nabla.(\vec{v} C).
+++++
+where
 
-We  model  the  infected  person  breathing  or  talking  as  a  continuous  point source  emitting  viral  particles  at  a  constant  rate  of  R  particles  per  second. Thus, an infectious person talking or breathing at position latexmath:[(x_0,y_0)] starting at time latexmath:[t=t_0] is modelled as follows:
-latexmath:[$$S_{inf}=R \delta(x−x_0)\delta(y−y_0)H(t−t_0).$$] +
-latexmath:[\delta(x)] is the Kronecker delta function +
-latexmath:[H(t)] is the Heaviside step function. +
-Because _R_ is unknown so far, we assume every respiratory droplets contain the virus and that inhaling and exhaling occur at the same rate. We also assume there is mechanical ventilation in this indoor space provided by air vents.
-latexmath:[$$S_{vent}=−\lambda C,$$]
-where latexmath:[$\lambda$] is the air exchange rate of the room.  This is an approximation sinceremoval of the air by ventilation occurs at a higher rate near the air vents.
+- stem:[C] = concentration of airborne infectious particles 
+- stem:[t] = time 
+- stem:[\nabla] = two-dimensional gradient operator 
+- stem:[K] = isotropic eddy diffusion coefficient (turbulent diffusion) 
+- stem:[\vec{x}] = advection velocity of the air 
+- stem:[S] = sum of sources and sinks of viral particles.
+
+We  model  the  infected  person  breathing  or  talking  as  a  continuous  point source  emitting  viral  particles  at  a  constant  rate  of  R  particles  per  second. 
+
+Thus, an infectious person talking or breathing at position stem:[(x_0,y_0)] starting at time stem:[t=t_0] is modelled as follows:
+[stem]
+++++
+S_{inf}=R \delta(x−x_0)\delta(y−y_0)H(t−t_0).
+++++
+where
+
+- stem:[\delta(x)] is the Kronecker delta function 
+- stem:[H(t)] is the Heaviside step function. 
+
+Because _R_ is unknown so far, we assume every respiratory droplets contain the virus and that inhaling and exhaling occur at the same rate. 
+We also assume there is mechanical ventilation in this indoor space provided by air vents.
+[stem]
+++++
+S_{vent}=−\lambda C,
+++++
+where stem:[\lambda] is the air exchange rate of the room.  
+This is an approximation sinceremoval of the air by ventilation occurs at a higher rate near the air vents.
 Assuming there is only one infectious person, we obtain the following partial differential equation (PDE):
-latexmath:[$$\frac{\partial C}{\partial t} + \vect{v}.(\nabla C)−K\nabla^2 C=R \delta(x−x_0)\delta(y−y_0)H(t−t_0)−\lambda C.$$]
+[stem]
+++++
+\frac{\partial C}{\partial t} + \underbrace{\mathbf{v} \cdot \nabla C}_{\mbox{advection}}−\underbrace{\nabla \cdot ( K \nabla C )}_{\mbox{diffusion}}=R \delta(x−x_0)\delta(y−y_0)H(t−t_0)\underbrace{−\lambda C}_{\mbox{reaction}}.
+++++
 
 == Aiflow simulation
 :hardbreaks-option:
@@ -69,36 +92,52 @@ In principle, direct ASOM can be applied for any case. Thus, it should be the fi
 The essential of _N_-point ASOM is to replace the real diffuser by several simple openings so as to reduce thenumber of grids for numerical calculation, while maintaining the inlet momentum and mass flows.
 
 For a supply opening with one discharge direction, the actual inlet momentum flow is
-latexmath:[$$J_{in} = mV_{\tau} = m\frac{L}{A_c}$$]
+[stem]
+++++
+J_{in} = mV_{\tau} = m\frac{L}{A_c}
+++++
 
-latexmath:[J_{in}] = momentum flux (kg.m/s²)
-_m_ = mass flow rate (kg/s)
-latexmath:[V_t] = velocity (m/s)
-_L_ = volume flow rate (m³/s)
-latexmath:[A_c] = effective area of the supply opening (m²)
+- stem:[J_{in}] = momentum flux (kg.m/s²)
+- stem:[m] = mass flow rate (kg/s)
+- stem:[V_t] = velocity (m/s)
+- stem:[L] = volume flow rate (m³/s)
+- stem:[A_c] = effective area of the supply opening (m²)
 
 To describe the right momentum flow while maintainingthe same mass flow rate, the effective area coefficient for calculating the inlet momentum source term in the CFD code is used. That is:
-latexmath:[$$J_{in} = m\frac{L}{R_{fa}A}$$]
-_A_ = gross area of the supply opening (m²)
-latexmath:[R_{fa}] = ratio of effectivearea to gross area of the supply opening (≤ 1)
-By this equation, inlet momentum flow can be correctly defined and the right inlet mass flow is also given at the same time. It is not necessary to describe boundary conditions formomentum and continuity equations separately. 
+[stem]
+++++
+J_{in} = m\frac{L}{R_{fa}A}
+++++
+
+- stem:[A] = gross area of the supply opening (m²)
+- stem:[R_{fa}] = ratio of effectivearea to gross area of the supply opening (≤ 1)
+
+NOTE: By this equation, inlet momentum flow can be correctly defined and the right inlet mass flow is also given at the same time. 
+It is not necessary to describe boundary conditions formomentum and continuity equations separately. 
 
 The buoyancy inflow of the supply opening is
-latexmath:[$$B = g\Delta\rho L$$]
-_g_ = acceleration of gravity (m/s²)
-latexmath:[\Delta\rho] = difference of supply and indoor air density (kg/m³)
-_L_ = supply volume flow rate (m³/s)
+[stem]
+++++
+B = g\Delta\rho L
+++++
+
+- stem:[g] = acceleration of gravity (m/s²)
+- stem:[\Delta\rho] = difference of supply and indoor air density (kg/m³)
+- stem:[L] = supply volume flow rate (m³/s)
 
 For indoor air, we have
-latexmath:[$$\Delta\rho = -\Delta T\beta\rho,$$]
-latexmath:[$$\beta = \frac{1}{T_0}$$]
-latexmath:[\Delta T] = the difference of supply and indoor air temperature (K)
-latexmath:[\beta] = volumetric coeQcient of expansion (1/K)
-latexmath:[T_0] = average temperature of indoor air (K)
+stem:[\Delta\rho = -\Delta T\beta\rho,]
+stem:[\beta = \frac{1}{T_0}]
+stem:[\Delta T] = the difference of supply and indoor air temperature (K)
+stem:[\beta] = volumetric coeQcient of expansion (1/K)
+stem:[T_0] = average temperature of indoor air (K)
 
 Therefore,
-latexmath:[$$B=−g\frac{\Delta T}{T_0}\rho L.$$]
-The _N_-point ASOM can ensure _B_ if _L_ is correctly defined.
+[stem]
+++++
+B=−g\frac{\Delta T}{T_0}\rho L.
+++++
+The stem:[N]-point ASOM can ensure stem:[B] if stem:[L] is correctly defined.
 
 == Bibliography
 https://www.researchgate.net/publication/223542250_A_simplified_system_for_indoor_airflow_simulation[A simplified system for indoor airflow simulation _© 2003 Elsevier Science Ltd. All rights reserved_.]
