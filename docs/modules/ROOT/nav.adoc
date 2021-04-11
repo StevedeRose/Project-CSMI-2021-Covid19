@@ -1,7 +1,7 @@
 * {feelpp} project
 ** xref:index.adoc[Introduction]
-** xref:formulation.adoc[Modelling Airborne Transmission of COVID-19]
-** xref:cmake.adoc[cmake environment]
-** xref:antora.adoc[antora environment]
-** xref:vscode.adoc[vscode integration]
+** xref:formulation.adoc[Presentation]
+** xref:cmake.adoc[CMake environment]
+** xref:antora.adoc[Antora environment]
+** xref:vscode.adoc[VSCode integration]
 ** xref:githubactions.adoc[Github Actions]
