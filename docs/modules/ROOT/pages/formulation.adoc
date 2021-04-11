@@ -139,5 +139,10 @@ B=−g\frac{\Delta T}{T_0}\rho L.
 ++++
 The stem:[N]-point ASOM can ensure stem:[B] if stem:[L] is correctly defined.
 
-== Bibliography
-https://www.researchgate.net/publication/223542250_A_simplified_system_for_indoor_airflow_simulation[A simplified system for indoor airflow simulation _© 2003 Elsevier Science Ltd. All rights reserved_.]
+
+[bibliography]
+== References
+
+include::partial$bibliography.adoc[]   
+
+
