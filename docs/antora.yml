@@ -1,5 +1,5 @@
 name: covid19
-title: Feel++ Covid 19
+title: Covid 19
 version: '1.0.0'
 prerelease: '-alpha.1'
 start_page: ROOT:index.adoc

@@ -19,7 +19,7 @@ And we test the effect on several ventilation settings:
 * breathing with and without a face mask
 * talking with and without a face mask.
 
-Models studying risk of airborne transmission generally fall into one of twotypes:  the well-mixed room (WMR) assumption and Computational Fluid Dy-namics (CFD) models.
+Models studying risk of airborne transmission generally fall into one of twotypes:  the well-mixed room (WMR) assumption and Computational Fluid Dynamics (CFD) models.
 Well  Mixed  Room  model  assume  virus-carrying  aerosols  are  evenly  dis-tributed throughout the room, so everyone in the room is equally likely to be infected.  This assumption greatly simplifies the problem by ignoring the com-plex effects of the air flow on the airborne particles.  These types of models aretherefore quick to run, but also too simplistic.  Computational Fluid Dynamics simulations are useful in studying airborne transmission as they can take intoa ccount the details of the room size, geometry, the complex turbulent airflow and the size distribution of the aerosols.  These models are accurate, but take along time to run and are not suited for «dynamic simulations».
 Therefore,  we  develop  a  model  that  provides  quick  simulations  and  stilltakes  into  account  turbulence  airflow. This  model  is  based  on  the  advection–diffusion–reaction equation.
 
