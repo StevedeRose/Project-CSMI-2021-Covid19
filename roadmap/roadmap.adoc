@@ -1,0 +1,72 @@
+// Pour générer l'image de la roadmap
+// Depuis le répertoire `project-csmi-2021-covid19/roadmap/`
+// Taper:
+//	`asciidoctor -r asciidoctor-diagram road.adoc`
+// Puis:
+//  `rm roadmap.html`
+// Efin:
+//  `mv diagram-classes.png ../docs/modules/ROOT/images/roadmap.png`
+
+[plantuml, diagram-classes, png]     
+....
+@startuml
+<style>
+ganttDiagram {
+	task {
+		FontName Helvetica
+		FontSize 12
+	}
+	milestone {
+		FontColor blue
+		FontSize 14
+		FontStyle italic
+		BackGroundColor Red
+		LineColor red
+	}
+	note {
+		FontColor DarkGreen
+		FontSize 12
+		LineColor OrangeRed
+	}
+}
+</style>
+project starts the 2021/03/30
+tuesday is colored in LightYellow/Orange
+sunday is colored in LightBlue
+[Overall target] lasts 60 days and is colored in Lavender/Blue
+[Project's presentation] on {Anita:50%}{Mariam:50%}{Steve:50%} lasts 3 weeks
+[Project's presentation] is 85% completed
+[Collaboration with companies] on {Anita:50%}{Mariam:50%}{Steve:50%} lasts 3 weeks
+[Overall target] starts 2021/03/30
+[Project's presentation] starts 2021/03/31
+[Collaboration with companies] starts 2021/03/31
+[V0] happens at [Collaboration with companies]'s end
+
+[1st sub-objective] lasts 2 weeks and is colored in Coral/Green
+[2nd sub-objective] lasts 3 weeks and is colored in Coral/Blue
+[1st sub-objective] starts at [V0]'s end
+[2nd sub-objective] starts at [Collaboration with companies]'s end
+
+[Study of test cases] lasts 2 weeks and is colored in LightGreen/Green
+[Output's reproduction] lasts 3 weeks and is colored in LightGreen/Blue
+[Study of test cases] starts at [1st sub-objective]'s end
+[Output's reproduction] starts at [1st sub-objective]'s end
+[V1] happens at [Output's reproduction]'s end
+[V1] happens 5 weeks after [Collaboration with companies]'s end
+[V0] --> [V1]
+
+[Pre-final release] lasts 2 weeks and is colored in GreenYellow/Green
+[Report] lasts 2 weeks and is colored in GreenYellow/Blue
+[Pre-final release] starts at [Study of test cases]'s end
+[Report] starts at [Study of test cases]'s end
+[V2] happens at [Pre-final release]'s end
+[V1] --> [V2]
+
+[Final outputs] lasts 10 days and is colored in Orange/Green
+[Final outputs] starts at [Output's reproduction]'s end
+[Oral defense] lasts 2 days and is colored in Green/Red
+[Oral defense] starts 2021/05/27
+[Vfinal] happens at [Oral defense]'s end
+[V2] --> [Vfinal]
+@enduml
+....
