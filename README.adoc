@@ -3,4 +3,4 @@
 
 image:https://github.com/feelpp/feelpp-project/workflows/CI/badge.svg[CI]
 
-The documentation is link:docs/modules/ROOT/index.adoc[here].
+The documentation is link:docs/modules/ROOT/pages/index.adoc[here].
