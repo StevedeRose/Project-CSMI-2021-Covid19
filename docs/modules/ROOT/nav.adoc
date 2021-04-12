@@ -1,6 +1,7 @@
 * {feelpp} project
 ** xref:index.adoc[Introduction]
 ** xref:formulation.adoc[Formulation]
+** xref:roadmap.adoc[Roadmap]
 ** Programming and documentation environment
 *** xref:env/cmake.adoc[CMake environment]
 *** xref:env/antora.adoc[Antora environment]

@@ -45,3 +45,5 @@ auto-save-list
 tramp
 .\#*
 context.synctex.gz
+roadmap/.asciidoctor/diagram/diagram-classes.png.cache
+roadmap/diagram-classes.png
