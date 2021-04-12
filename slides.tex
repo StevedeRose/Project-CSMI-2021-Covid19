@@ -8,6 +8,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \author{Anita Klein - Mariam Grigoryan - Steve de Rose}
 \newcommand{\TT}{}
 \newcommand{\PI}{}
@@ -16,6 +17,9 @@
 \newcommand{\PIV}{}
 \newcommand{\PV}{}
 \newcommand{\PVI}{}
+\newcommand{\PVII}{}
+\newcommand{\PVIII}{}
+\newcommand{\PIX}{}
 \title{Airborne Transmission of Covid-19}
 
 
@@ -63,17 +67,59 @@
 \end{frame}
 
 \section{\PIV} 
-\begin{frame}{Methodology}{\PIV} 
+\begin{frame}{Illustration}{\PIV} 
+    \begin{itemize}
+        \begin{figure}
+         \includegraphics[width=10cm, height=5cm]{illu.png}
+            \caption{Virus airborne transmission in an office }
+           \end{figure}
+    \end{itemize}  
+\end{frame}
+
+
+
+\section{\PV} 
+\begin{frame}{Methodology I}{\PV} 
     \begin{itemize}
         \item Firstly, 2D model to study/reproduce the concentration of airborne infectious particles.
         \item Using the advection–reaction–diffusion equation.
-        \item Secondly, using «N-point ASOM» (air supply opening model).
+        \item Assumptions: \\- particles  released from
+        the infected person with zero initial velocity.
+        \\ - transported via advection due to the airflow in the room and diffusion due to turbulent mixing
+        \\ - the advection velocity of the air, $v (m/s)$ controlled by the air-conditioning unit.
+        \\ -  the recirculation of air leads to turbulent mixing of the infectious particles.  
     \end{itemize}  
 
 \end{frame}
 
-\section{\PV} 
-\begin{frame}{The Tools}{\PV} 
+\section{\PVI} 
+\begin{frame}{ARD Equation}{\PVI} 
+    \begin{itemize}
+
+        \item Hence, the advection–reaction–diffusion equation :
+        \\ $$ \frac{\partial C}{\partial t} = \nabla . (K  \nabla  C) - \nabla . (\overrightarrow{v}  C) + S.$$
+        \item C = concentration of airborne infectious particles \\
+        t = time \\
+        $\nabla$ = two-dimensional gradient operator \\
+        K = isotropic eddy diffusion coefficient (turbulent diffusion ) \\
+        $\overrightarrow{v}$ = advection velocity of the air \\
+        S = sum of sources and sinks of viral particles.
+    \end{itemize}  
+
+\end{frame}
+
+\section{\PVII} 
+\begin{frame}{Methodology II}{\PVII} 
+    \begin{itemize}
+        \item Secondly, using «N-point ASOM» (air supply opening model).
+        \item Developped in 2003 by Bin Zhaoa, Xianting Lib and Qisen Yanb at Tsinghua University, Beijing, China. 
+        \item Replace the real diffuser by several simple openings, maintaining the inlet momentum and mass flows.
+    \end{itemize}  
+
+\end{frame}
+
+\section{\PVIII} 
+\begin{frame}{The Tools}{\PVIII} 
     \begin{itemize}
         \item Feel++ to solve advection–reaction–diffusion equation.
         \item Paraview to visualize the solution.
@@ -83,12 +129,15 @@
 
 \end{frame}
 
-\section{\PVI} 
-\begin{frame}{References }{\PVI} 
+\section{\PIX} 
+\begin{frame}{References }{\PIX} 
     \begin{itemize}
         \item Z. Lau, K. Kaouri, I. Griffiths. Modelling Airborne Transmission of COVID-19 in Indoor Spaces Using anAdvection–Diffusion–Reaction Equation.School of Mathematics, Cardiff University and Mathematical Institute, University of Oxford.
         \item B. Zhao and X. Li. A simplified system for indoor airflow simulation. Building and Environment · April 2003
         \item Zohra Djatouti, Christophe Prud’homme, Vincent Chabannes, Romain Hild IBat Website 
+        \item \usepackage{}
+        \url {https://twitter.com/T_Fiolet/status/1378989583682179075?s=09}
+        
     \end{itemize}  
 
 \end{frame}
