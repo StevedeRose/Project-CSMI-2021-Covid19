@@ -44,7 +44,10 @@ docs/.cache/
 auto-save-list
 tramp
 .\#*
-context.synctex.gz
+*.gz
+*.aux
+*.out
+
 roadmap/.asciidoctor/diagram/diagram-classes.png.cache
 roadmap/diagram-classes.png
 slides.synctex.gz
