@@ -1,5 +1,5 @@
 :feelpp: Feel++
-= {feelpp} Project Template
+= {feelpp} Modelling Airborne Transmission of COVID-19
 
 image:https://github.com/feelpp/feelpp-project/workflows/CI/badge.svg[CI]
 
